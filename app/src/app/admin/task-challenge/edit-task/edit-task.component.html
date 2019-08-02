@@ -1,0 +1,11 @@
+<nb-card>
+  <nb-card-header>Edit Task</nb-card-header>
+  <nb-card-body>
+    <input nbInput [(ngModel)]="task.task"  class="form-control"/><br><br>
+    <textarea rows="5" [(ngModel)]="task.desc" class="form-control" nbInput fullWidth shape="round"  placeholder=""></textarea>
+  </nb-card-body>
+  <nb-card-footer>
+    <button class="cancel" nbButton status="danger" (click)="cancel()">Cancel</button>
+    <button nbButton status="success" (click)="submit(task.task.value, task.desc.value)">Submit</button>
+  </nb-card-footer>
+</nb-card>

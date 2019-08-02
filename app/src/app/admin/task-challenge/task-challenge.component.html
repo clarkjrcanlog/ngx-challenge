@@ -1,0 +1,41 @@
+<div class="container">
+  <h2>Task List</h2>
+
+  <div class="float-right" id="upperBtn">
+    <button type="button" class="btn btn-info" (click)="clearList()">Cancel</button>
+    <button type="button" class="btn btn-info" id="createBtn" (click)="createModal()">Create</button>
+  </div>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Task</th>
+        <th>Description</th>
+        <th>Status</th>
+        <th>Date</th>
+        <th colspan="2">Options</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let task of all; let i = index;">
+      <tr>
+        <td>
+            <input type="checkbox" name="status" style="margin-right: 5px" (change)="testCheck(task)">{{task.task}}
+        </td>
+        <td>{{task.desc}}</td>
+        <td><input type="checkbox" name="status" style="margin-right: 5px" (change)="changeStatus(task)" [checked]="task.status == 'Done' ? true : false">{{task.status}}</td>
+        <td>{{task.date}}</td>
+        <td><button type="button" class="btn btn-info" (click)="editModal(task)">View</button></td>
+        <td><button type="button" class="btn btn-danger" (click)="deleteTask(task)">Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+    <div class="float-right" id="lwrBtn">
+      <button type="button" class="btn btn-info" id="saveBtn" (click)="saveData()"[disabled]="tasks == 0">Save</button>
+      <button type="button" class="btn btn-danger" id="deleteMulti" (click)="deleteMulti()"[disabled]="testChecker == 0">Delete Multiple</button>
+    </div>
+
+    <ul>
+      <!-- <li *ngFor="let task of tasks">{{ task[0] + " " +  task[1]}}</li> -->
+    </ul>
+</div>
